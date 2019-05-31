@@ -2,7 +2,7 @@
     include("./db-connect.php");
     session_start();
 
-    $randomnumber = rand(1,99);
+    $randomnumber = rand(1,3);
 
     
     mysqli_query($con, $query);
@@ -14,10 +14,10 @@
         $myarr[]=$data;
     }
     echo json_encode($myarr);
-    $file = fopen('data.json' ,'w');
+    $file = fopen('./RandomTemp/data.json' ,'w');
     fwrite($file, json_encode($myarr, JSON_FORCE_OBJECT));
     
-    $url = 'data.json'; // path to your JSON file
+    $url = './RandomTemp/data.json'; // path to your JSON file
     $data = file_get_contents($url); // put the contents of the file into a variable
     $characters = json_decode($data); // decode the JSON feed
 
